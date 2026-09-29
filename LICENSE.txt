@@ -1,0 +1,26 @@
+MikiZip / Hydra-Pack Engine
+Copyright (c) 2026 Mihajlo Stojanovski. All rights reserved.
+
+PROPRIETARY SOFTWARE LICENSE
+
+This software, including its source code, object code, algorithms, file formats and
+documentation (the "Software"), is the proprietary and confidential property of
+Mihajlo Stojanovski. It is not open source.
+
+You are granted a personal, non-exclusive, non-transferable licence to install and use
+the Software in executable form. You may NOT, without prior written permission from
+the copyright holder:
+  - copy, modify, merge or create derivative works of the Software;
+  - distribute, sublicense, sell, rent, lend or otherwise transfer the Software;
+  - reverse engineer, decompile or disassemble the Software, except where applicable
+    law expressly permits this despite this restriction;
+  - remove or alter any copyright or proprietary notice.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE USE OF THE SOFTWARE.
+
+Third-party components: the installed program bundles the Python runtime (PSF License)
+and uses zlib / liblzma (permissive licences); those components remain under their own
+licences.
