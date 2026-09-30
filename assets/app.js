@@ -145,17 +145,36 @@
     renderPlatforms(d);
   }
 
-  /* After a click, say what happens next, in place, without hijacking the page. */
+  /* After a download starts: say what happens next, and thank them (once per visit). */
+  const thanks = $("[data-thanks]");
+  let thanked = false;
+  try { thanked = sessionStorage.getItem("mikizip-thanked") === "1"; } catch (_) { /* private mode */ }
+  function openThanks() {
+    if (!thanks || thanked) return;
+    thanked = true;
+    try { sessionStorage.setItem("mikizip-thanked", "1"); } catch (_) { /* fine */ }
+    thanks.hidden = false;
+    requestAnimationFrame(() => thanks.classList.add("is-open"));
+  }
+  function closeThanks() {
+    if (!thanks) return;
+    thanks.classList.remove("is-open");
+    setTimeout(() => (thanks.hidden = true), 450);
+  }
+  if (thanks) {
+    $("[data-thanks-close]", thanks).addEventListener("click", closeThanks);
+    $("[data-thanks-steps]", thanks).addEventListener("click", closeThanks);
+    addEventListener("keydown", (e) => { if (e.key === "Escape") closeThanks(); });
+  }
   document.addEventListener("click", (e) => {
     const a = e.target.closest("[data-dl]");
     if (!a) return;
-    const tab = PLATFORMS[a.dataset.dl].tab;
-    selectTab(tab);
-    toast("Download started. Next: open it, then follow the steps below");
+    selectTab(PLATFORMS[a.dataset.dl].tab);
     const note = $("[data-note]");
     if (note && a.closest(".get")) {
-      note.innerHTML = `<b>Downloading ${file(a.dataset.dl) ? file(a.dataset.dl).name : "MikiZip"}.</b> Next: <a href="#install">open it and follow 3 short steps ↓</a>`;
+      note.innerHTML = `<b>Downloading ${file(a.dataset.dl) ? file(a.dataset.dl).name : "MikiZip"}.</b> Next: <a href="#install">open it, three quick steps ↓</a>`;
     }
+    setTimeout(openThanks, 900); // after the browser's own download UI has appeared
   });
 
   /* ---------------------------------------------------------------- platform cards + checksums */
@@ -252,31 +271,109 @@
   const nav = $(".nav");
   addEventListener("scroll", () => nav.classList.toggle("is-scrolled", scrollY > 8), { passive: true });
 
-  /* ---------------------------------------------------------------- the chart (real measurements) */
-  const ROWS = [
-    { label: "A real 58 MB PDF", sub: "vs zstd -19 --long", other: 56.27, max: 45.83 },
-    { label: "30 JPEG photos", sub: "vs MikiZip 7z / 7-Zip", other: 0.74, max: 0.63 },
-    { label: "4,000 small, similar files", sub: "vs 7-Zip -mx9", other: 0.27, max: 0.24 },
-    { label: "Source code, 1,876 files", sub: "vs 7-Zip -mx9", other: 18.32, max: 18.26 },
-    { label: "Two big files sharing content", sub: "vs zstd -19 --long", other: 0.36, max: 0.61 },
-  ];
-  const chart = $("[data-chart]");
-  for (const r of ROWS) {
-    const top = Math.max(r.other, r.max);
-    const change = (r.max / r.other - 1) * 100;
-    const kind = Math.abs(change) < 1 ? "tie" : change < 0 ? "win" : "loss";
-    const verdict = kind === "tie" ? "tie" : (change < 0 ? "−" : "+") + Math.abs(change).toFixed(0) + " %";
-    const unit = (v) => (v < 1 ? v.toFixed(2) : v.toFixed(1)) + " MB";
-    chart.append(h("div", { class: "row", role: "row" },
-      h("div", { class: "row__label", role: "rowheader" }, h("b", {}, r.label), h("span", {}, r.sub)),
-      h("div", { class: "row__bars", role: "cell" },
-        h("div", { class: "bar bar--other", style: `--w:${(r.other / top) * 0.78}` }, h("i"), h("em", {}, unit(r.other))),
-        h("div", { class: "bar bar--max", style: `--w:${(r.max / top) * 0.78}` }, h("i"), h("em", {}, unit(r.max)))),
-      h("div", { class: `verdict verdict--${kind}`, role: "cell", title: kind === "loss" ? "MAX is larger here" : "" },
-        kind === "loss" ? verdict + " ✕" : verdict)));
+  /* ---------------------------------------------------------------- "Just, zip it." */
+  // Letters arrive wide and loose; a zipper pull then sweeps across and snaps each letter
+  // tight as it passes (a tiny overshoot, like a tooth clicking in), closing the teeth behind it.
+  const squeeze = $("[data-squeeze]");
+  const zipper = $("[data-zipper]");
+  function zipHeadline() {
+    if (!squeeze || !zipper) return;
+    const chars = [];
+    $$(".squeeze__line", squeeze).forEach((line) => {
+      const text = line.textContent;
+      line.textContent = "";
+      for (const c of text) {
+        const span = h("span", { class: "ch" }, c === " " ? "\u00a0" : c);
+        line.append(span);
+        chars.push(span);
+      }
+    });
+    if (reduced) {
+      chars.forEach((c) => c.classList.add("is-zipped"));
+      zipper.style.setProperty("--z", "100%");
+      const card = $(".coffee--hero");
+      if (card) card.classList.add("is-in");
+      return;
+    }
+    squeeze.classList.add("is-loose", "is-hidden");
+    zipper.style.setProperty("--z", "0%");
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      chars.forEach((c, i) => { c.style.transitionDelay = `${i * 45}ms`; });
+      squeeze.classList.remove("is-hidden");                  // 1. letters rise in, wide
+      setTimeout(() => {
+        chars.forEach((c) => (c.style.transitionDelay = "0ms"));
+        const zr = zipper.getBoundingClientRect();
+        const t0 = performance.now(), dur = 1250;
+        const ease = (k) => 1 - Math.pow(1 - k, 3);
+        const tick = (now) => {                                // 2. the pull sweeps, letters snap tight
+          const k = Math.min(1, (now - t0) / dur);
+          const x = zr.left + ease(k) * zr.width;
+          zipper.style.setProperty("--z", (ease(k) * 100).toFixed(2) + "%");
+          for (const c of chars) {
+            if (c.classList.contains("is-zipped")) continue;
+            const r = c.getBoundingClientRect();
+            if (r.left + r.width * 0.5 <= x || k >= 1) {
+              c.classList.add("is-zipped", "is-hit");
+              setTimeout(() => c.classList.remove("is-hit"), 160);
+            }
+          }
+          if (k < 1) requestAnimationFrame(tick);
+          else {
+            squeeze.classList.remove("is-loose");
+            const card = $(".coffee--hero");
+            if (card) setTimeout(() => card.classList.add("is-in"), 250);
+          }
+        };
+        requestAnimationFrame(tick);
+      }, 700 + chars.length * 45);
+    }));
   }
-  $$(".row .bar i").forEach((el, i) => (el.style.transitionDelay = `${Math.floor(i / 2) * 120 + (i % 2) * 60}ms`));
-  observe([$(".chart")]);
+  zipHeadline();
+
+  /* ---------------------------------------------------------------- stats count up */
+  const counter = "IntersectionObserver" in window && !reduced ? new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      counter.unobserve(e.target);
+      const el = e.target, to = +el.dataset.count, t0 = performance.now();
+      const step = (now) => {
+        const k = Math.min(1, (now - t0) / 1100);
+        el.textContent = Math.round((1 - Math.pow(1 - k, 3)) * to);
+        if (k < 1) requestAnimationFrame(step);
+      };
+      el.textContent = "0";
+      requestAnimationFrame(step);
+    }
+  }, { threshold: 0.6 }) : null;
+  if (counter) $$("[data-count]").forEach((el) => counter.observe(el));
+  $$(".stats .reveal").forEach((el, i) => el.style.setProperty("--i", i));
+
+  /* ---------------------------------------------------------------- sticky download dock */
+  // Visible only while the hero's download button is off screen and the page's own
+  // download / support sections are not in view: always one click away, never in the way.
+  const dock = $("[data-dock]");
+  if (dock && "IntersectionObserver" in window) {
+    const seen = new Map();
+    const update = () => {
+      const heroGone = seen.get("hero") === false && scrollY > 200;
+      const busy = seen.get("platforms") || seen.get("support") || seen.get("foot");
+      dock.classList.toggle("is-up", heroGone && !busy);
+      dock.hidden = !(heroGone && !busy);
+    };
+    const watch = new IntersectionObserver((entries) => {
+      for (const e of entries) seen.set(e.target.dataset.watch, e.isIntersecting);
+      update();
+    });
+    [["hero", "[data-primary]"], ["platforms", "#platforms"], ["support", "#support"], ["foot", ".foot"]].forEach(([k, sel]) => {
+      const el = $(sel);
+      if (el) { el.dataset.watch = k; watch.observe(el); }
+    });
+    $("[data-dock-link]", dock).addEventListener("click", (e) => {
+      e.preventDefault();
+      $("#download").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+      setTimeout(() => { const b = $("[data-primary] .btn"); if (b) b.focus({ preventScroll: true }); }, 600);
+    });
+  }
 
   /* ---------------------------------------------------------------- terminal replay */
   const term = $("[data-term]");

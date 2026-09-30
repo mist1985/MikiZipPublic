@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MikiZip — Just, zip it.</title>
-<meta name="description" content="MikiZip makes .zip, .7z and extra-small .mkz archives on macOS, Windows and Linux, and checks every archive before it says done. Free download.">
+<meta name="description" content="MikiZip makes smaller archives on macOS, Windows and Linux, and checks every one before it says done. Free download.">
 <meta property="og:title" content="MikiZip — Just, zip it.">
-<meta property="og:description" content="A file archiver that checks every archive before it says done. .zip for everyone, .7z for small, MAX for smallest.">
+<meta property="og:description" content="Smaller archives, checked before they’re done. Free for macOS, Windows and Linux.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121210" media="(prefers-color-scheme: dark)">
@@ -23,148 +23,133 @@
 <a class="skip" href="#download">Skip to download</a>
 
 <header class="nav">
-  <a class="wordmark" href="#top" aria-label="MikiZip home">
-    <span class="wordmark__box" aria-hidden="true"></span>MIKIZIP
-  </a>
+  <a class="wordmark" href="#top" aria-label="MikiZip home"><span class="wordmark__box" aria-hidden="true"></span>MIKIZIP</a>
   <nav aria-label="Sections">
-    <a href="#modes">Modes</a>
-    <a href="#numbers">Numbers</a>
+    <a href="#how">How it works</a>
     <a href="#install">Install</a>
+    <a href="#support">Support</a>
     <a href="#faq">FAQ</a>
   </nav>
-  <a class="nav__cta" href="#download" data-release-version>Download</a>
+  <a class="nav__cta" href="#download">Download</a>
 </header>
 
 <main id="top">
 
 <!-- ============================================================ HERO -->
 <section class="hero" aria-labelledby="hero-title">
-  <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Archiver for macOS, Windows &amp; Linux · <span data-release-version-text>v1.3.1</span></p>
-  <h1 id="hero-title" class="squeeze" aria-label="Just, zip it.">
-    <span class="squeeze__line">Just,</span>
-    <span class="squeeze__line">zip&nbsp;it.</span>
-  </h1>
-  <div class="zipper" aria-hidden="true"><span class="zipper__pull"></span></div>
-
-  <p class="lede">
-    MikiZip packs your files into <strong>.zip</strong> for anyone, <strong>.7z</strong> for small,
-    or <strong>MAX</strong> for smallest, and it <em>checks every archive before it says done.</em>
-    Nothing half-written, nothing overwritten, nothing lost.
-  </p>
-
-  <div class="get" id="download" tabindex="-1">
-    <div class="get__primary" data-primary>
-      <!-- filled by app.js; this is the no-JavaScript fallback -->
-      <a class="btn btn--big" href="https://github.com/mist1985/MikiZipPublic/releases/latest">
-        <span class="btn__label">Download MikiZip</span>
-        <span class="btn__meta">All platforms · free</span>
-      </a>
+  <div class="hero__main">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Free for macOS, Windows &amp; Linux · <span data-release-version-text>v1.3.2</span></p>
+    <h1 id="hero-title" class="squeeze" aria-label="Just, zip it." data-squeeze>
+      <span class="squeeze__line" aria-hidden="true">Just,</span>
+      <span class="squeeze__line" aria-hidden="true">zip&nbsp;it.</span>
+    </h1>
+    <div class="zipper" aria-hidden="true" data-zipper>
+      <span class="zipper__open"></span><span class="zipper__closed"></span><span class="zipper__pull"></span>
     </div>
-    <p class="get__note" data-note></p>
-    <div class="get__others" data-others>
-      <span class="get__others-title">Also for</span>
-      <a href="#platforms">macOS · Windows · Linux</a>
+
+    <p class="lede">Smaller archives, <em>checked before they’re done.</em> Nothing overwritten, nothing lost.</p>
+
+    <div class="get" id="download" tabindex="-1">
+      <div class="get__primary" data-primary>
+        <a class="btn btn--big" href="https://github.com/mist1985/MikiZipPublic/releases/latest">
+          <span class="btn__label">Download MikiZip</span>
+          <span class="btn__meta">All platforms · free</span>
+        </a>
+      </div>
+      <p class="get__note" data-note></p>
+      <div class="get__others" data-others>
+        <span class="get__others-title">Also for</span>
+        <a href="#platforms">macOS · Windows · Linux</a>
+      </div>
     </div>
   </div>
+
+  <aside class="coffee coffee--hero" aria-label="Support MikiZip">
+    <div class="coffee__qr">
+      <img src="assets/support-qr.png" width="700" height="700" alt="QR code: buymeacoffee.com/mihajlo">
+    </div>
+    <div class="coffee__text">
+      <p class="coffee__kicker">Free, and it stays free</p>
+      <p class="coffee__line">Scan to buy me a coffee.</p>
+      <a class="coffee__link" href="https://www.buymeacoffee.com/mihajlo" rel="noopener">buymeacoffee.com/mihajlo</a>
+    </div>
+  </aside>
 </section>
 
 <!-- ============================================================ TERMINAL -->
-<section class="demo" aria-label="What MikiZip looks like in a terminal">
-  <div class="term" role="img" aria-label="A terminal running mikizip max Photos: a progress bar fills, then MikiZip reports the archive verified.">
+<section class="demo" aria-label="MikiZip in a terminal">
+  <div class="term" role="img" aria-label="A terminal: mikizip zip, then mikizip max, each shows the MikiZip banner, a progress bar, and a verified result.">
     <div class="term__bar"><i></i><i></i><i></i><span>Terminal — mikizip</span></div>
     <pre class="term__screen" data-term aria-hidden="true"></pre>
   </div>
-  <p class="demo__caption">The real output, character for character. The same banner and the same progress bar you get on your machine.</p>
+  <p class="demo__caption">Real output from a real run. One command, and the archive is checked before MikiZip says done.</p>
 </section>
 
-<!-- ============================================================ MODES -->
-<section class="modes" id="modes" aria-labelledby="modes-title">
-  <div class="section-head">
-    <p class="kicker">01 — Three ways to zip</p>
-    <h2 id="modes-title">Pick who has to open it.<br>MikiZip does the rest.</h2>
-  </div>
+<!-- ============================================================ STATS -->
+<section class="stats" aria-labelledby="stats-title">
+  <h2 id="stats-title" class="sr-only">How much smaller</h2>
+  <div class="stat reveal"><span class="stat__num" data-count="19">19</span><span class="stat__unit">% smaller</span><span class="stat__what">on PDFs</span></div>
+  <div class="stat reveal"><span class="stat__num" data-count="16">16</span><span class="stat__unit">% smaller</span><span class="stat__what">on photos, with zero quality loss</span></div>
+  <div class="stat reveal"><span class="stat__num" data-count="12">12</span><span class="stat__unit">% smaller</span><span class="stat__what">on folders of small files</span></div>
+  <p class="stats__note">MikiZip MAX compared with 7-Zip at its maximum setting, on sample files. Every file comes back byte for byte.</p>
+</section>
 
+<!-- ============================================================ HOW -->
+<section class="modes" id="how" aria-labelledby="modes-title">
+  <div class="section-head">
+    <p class="kicker">How it works</p>
+    <h2 id="modes-title">One word decides the format.</h2>
+  </div>
   <div class="tags">
     <article class="tag reveal">
       <div class="tag__tab">.zip</div>
       <div class="tag__body">
         <p class="tag__cmd"><code>mikizip zip Photos</code></p>
         <h3>For anyone</h3>
-        <p>Opens with a double-click on every Mac, PC and phone. Standard Deflate, nothing exotic.</p>
-        <dl>
-          <dt>Opens in</dt><dd>Finder, Explorer, 7-Zip, WinRAR, everything</dd>
-          <dt>Size</dt><dd><span class="meter" style="--v:.88"></span> normal</dd>
-        </dl>
+        <p>Opens with a double-click on every Mac, PC and phone.</p>
+        <p class="tag__meta"><span class="meter" style="--v:.88"></span> standard size</p>
       </div>
     </article>
-
     <article class="tag reveal">
       <div class="tag__tab">.7z</div>
       <div class="tag__body">
         <p class="tag__cmd"><code>mikizip 7z Photos</code></p>
         <h3>Small, still standard</h3>
-        <p>Solid LZMA2: all files compressed together, so folders of similar files shrink a lot.</p>
-        <dl>
-          <dt>Opens in</dt><dd>7-Zip, WinRAR, Keka, The Unarchiver, Windows&nbsp;11</dd>
-          <dt>Size</dt><dd><span class="meter" style="--v:.55"></span> much smaller</dd>
-        </dl>
+        <p>Opens in 7-Zip, WinRAR, Keka and Windows&nbsp;11.</p>
+        <p class="tag__meta"><span class="meter" style="--v:.55"></span> much smaller</p>
       </div>
     </article>
-
     <article class="tag tag--max reveal">
       <div class="tag__tab">MAX · .mkz</div>
       <div class="tag__body">
         <p class="tag__cmd"><code>mikizip max Photos</code></p>
         <h3>Smallest</h3>
-        <p>Takes apart the old compression inside PDFs, Office files and photos, then packs the contents properly, losslessly, byte for byte.</p>
-        <dl>
-          <dt>Opens in</dt><dd>MikiZip (free, all three systems)</dd>
-          <dt>Size</dt><dd><span class="meter" style="--v:.42"></span> smallest</dd>
-        </dl>
+        <p>Repacks PDFs, Office files and photos losslessly. Opens with MikiZip.</p>
+        <p class="tag__meta"><span class="meter" style="--v:.42"></span> smallest</p>
       </div>
     </article>
   </div>
-  <p class="aside">Unpacking is one command for all three: <code>mikizip unzip Photos.mkz</code>. On a Mac or PC you can also just double-click a <code>.mkz</code>.</p>
+  <p class="aside">Unpacking is always <code>mikizip unzip</code>, or just double-click a <code>.mkz</code> file.</p>
 </section>
 
-<!-- ============================================================ NUMBERS -->
-<section class="numbers" id="numbers" aria-labelledby="numbers-title">
-  <div class="section-head">
-    <p class="kicker">02 — Measured, not promised</p>
-    <h2 id="numbers-title">MAX against the best other tool.<br><span class="muted">Including where it loses.</span></h2>
-  </div>
-
-  <div class="chart" role="table" aria-label="Archive size: best other tool versus MikiZip MAX">
-    <div class="chart__legend" aria-hidden="true">
-      <span><i class="sw sw--other"></i> best of 7-Zip, xz, zstd, Info-ZIP</span>
-      <span><i class="sw sw--max"></i> MikiZip MAX</span>
-    </div>
-    <div class="chart__rows" data-chart></div>
-  </div>
-  <p class="aside">Apple M5 Pro, <code>--memory 2048</code>, against 7-Zip 26.03, xz 5.8, zstd 1.5.7 and Info-ZIP 3.0. On text, source code, Office files and PNGs, MAX ties the best tool (±0.5&nbsp;%). Every archive in the test was extracted and compared byte for byte.</p>
-</section>
-
-<!-- ============================================================ PROMISES -->
+<!-- ============================================================ TRUST -->
 <section class="promises" aria-labelledby="promises-title">
   <div class="section-head">
-    <p class="kicker">03 — The rules it never breaks</p>
-    <h2 id="promises-title">Built so you never lose a file to your archiver.</h2>
+    <p class="kicker">Why you can trust it</p>
+    <h2 id="promises-title">Built so you never lose a file.</h2>
   </div>
   <ol class="rules">
-    <li class="reveal"><h3>Checked before “done”</h3><p>Every archive is read back from disk and compared with your files before MikiZip reports success.</p></li>
-    <li class="reveal"><h3>Nothing overwritten</h3><p>Existing files are never replaced unless you say <code>--force</code>, and even then the old one stays intact until the new one is in place.</p></li>
-    <li class="reveal"><h3>Nothing half-written</h3><p>Work happens under a private temporary name. Cancel, crash or close the window: only MikiZip’s own temporary files are removed.</p></li>
-    <li class="reveal"><h3>Your originals are read-only</h3><p>If a file changes while it is being packed, the job stops instead of saving an inconsistent copy.</p></li>
-    <li class="reveal"><h3>Safe to open anything</h3><p>Archives can’t write outside their folder: no <code>../</code> tricks, no symlink tricks, no zip bombs. Damage is reported, never guessed at.</p></li>
-    <li class="reveal"><h3>Polite with your machine</h3><p>A measured memory budget, low priority, and one CPU core always left free for you.</p></li>
+    <li class="reveal"><h3>Checked before “done”</h3><p>Every archive is read back and compared with your files before MikiZip reports success.</p></li>
+    <li class="reveal"><h3>Nothing overwritten</h3><p>An existing file is never replaced unless you ask. Your files stay exactly as they were.</p></li>
+    <li class="reveal"><h3>Safe to open anything</h3><p>No archive can write outside its folder or bomb your disk. Damage is reported, never guessed at.</p></li>
   </ol>
 </section>
 
 <!-- ============================================================ INSTALL -->
 <section class="install" id="install" aria-labelledby="install-title">
   <div class="section-head">
-    <p class="kicker">04 — Install in a minute</p>
-    <h2 id="install-title">Three steps. One honest warning.</h2>
+    <p class="kicker">Install</p>
+    <h2 id="install-title">Ready in three steps.</h2>
   </div>
 
   <div class="tabs" data-tabs>
@@ -176,73 +161,86 @@
 
     <div class="tabs__panel" role="tabpanel" id="panel-mac" aria-labelledby="tab-mac">
       <ol class="steps">
-        <li><strong>Download</strong> <span data-file-name="mac">MikiZip-1.3.1.pkg</span> and open it.</li>
-        <li><strong>If macOS blocks it</strong>, open <em>System Settings → Privacy &amp; Security</em>, scroll down and click <em>Open Anyway</em>, then confirm with your password.</li>
-        <li><strong>Done.</strong> Open Terminal and type <code>mikizip --version</code>. Double-click any <code>.mkz</code> to unpack it.</li>
+        <li><strong>Open</strong> <span data-file-name="mac">MikiZip.pkg</span> after it downloads.</li>
+        <li><strong>If macOS asks</strong>, go to <em>System Settings → Privacy &amp; Security</em> and click <em>Open Anyway</em>.</li>
+        <li><strong>Done.</strong> Type <code>mikizip zip</code> and a file name in Terminal, or double-click any <code>.mkz</code>.</li>
       </ol>
       <div class="mock mock--mac" aria-hidden="true">
-        <div class="mock__row"><span class="mock__icon mock__icon--shield"></span><span><b>“MikiZip-1.3.1.pkg” was blocked to protect your Mac.</b></span></div>
+        <div class="mock__row"><span class="mock__icon mock__icon--shield"></span><span><b>“MikiZip.pkg” was blocked to protect your Mac.</b></span></div>
         <div class="mock__btns"><span class="mock__btn mock__btn--hot">Open Anyway</span></div>
       </div>
-      <p class="fine">Needs a Mac with Apple silicon (M1 or newer). Uninstall any time with <code>mikizip-uninstall</code>.</p>
     </div>
 
     <div class="tabs__panel" role="tabpanel" id="panel-windows" aria-labelledby="tab-windows" hidden>
       <ol class="steps">
-        <li><strong>Download</strong> <span data-file-name="windows">MikiZip-1.3.1-Setup.exe</span> and run it. No administrator rights needed.</li>
-        <li><strong>If SmartScreen appears</strong> (“Windows protected your PC”), click <em>More info</em>, then <em>Run anyway</em>.</li>
-        <li><strong>Done.</strong> Open a <em>new</em> Command Prompt or PowerShell window and type <code>mikizip --version</code>.</li>
+        <li><strong>Run</strong> <span data-file-name="windows">MikiZip-Setup.exe</span>. No administrator rights needed.</li>
+        <li><strong>If Windows asks</strong>, click <em>More info</em>, then <em>Run anyway</em>.</li>
+        <li><strong>Done.</strong> Open a new Command Prompt and type <code>mikizip zip</code> and a file name.</li>
       </ol>
       <div class="mock mock--win" aria-hidden="true">
         <div class="mock__title">Windows protected your PC</div>
         <div class="mock__row"><span class="mock__link">More info</span></div>
         <div class="mock__btns"><span class="mock__btn mock__btn--hot">Run anyway</span><span class="mock__btn">Don’t run</span></div>
       </div>
-      <p class="fine">64-bit Windows. Uninstall from <em>Settings → Apps → Installed apps</em>.</p>
     </div>
 
     <div class="tabs__panel" role="tabpanel" id="panel-linux" aria-labelledby="tab-linux" hidden>
       <ol class="steps">
-        <li><strong>Download</strong> the archive for your processor: <span data-file-name="linux-x64">x64</span> or <span data-file-name="linux-arm64">ARM64</span>.</li>
-        <li><strong>Unpack and install</strong> for your user (no sudo):
+        <li><strong>Download</strong> the <span data-file-name="linux-x64">x86-64</span> or <span data-file-name="linux-arm64">ARM64</span> version.</li>
+        <li><strong>Install</strong> for your user:
           <pre class="snippet"><code>tar xzf MikiZip-*-linux-*.tar.gz
-cd MikiZip-*/ &amp;&amp; ./install.sh</code></pre>
-          or system-wide with <code>./install.sh --system</code>.</li>
-        <li><strong>Done.</strong> Type <code>mikizip --version</code>. Needs Python 3.9 or newer (already on most distributions).</li>
+cd MikiZip-*/ &amp;&amp; ./install.sh</code></pre></li>
+        <li><strong>Done.</strong> Type <code>mikizip --version</code>. Needs Python 3.9 or newer.</li>
       </ol>
     </div>
   </div>
+  <p class="fine">Why the prompt? MikiZip is an independent project, so it isn’t signed with a paid Apple or Microsoft certificate. <a href="#platforms">Check your download’s fingerprint</a> if you like.</p>
+</section>
 
-  <div class="why">
-    <h3>Why the warning?</h3>
-    <p>Apple and Microsoft show it for any app whose developer hasn’t paid for a signing certificate. MikiZip is a free, independent project, so it isn’t signed. To check that your download is exactly the one published here, compare its SHA-256 fingerprint:</p>
-    <div class="checks" data-checks></div>
+<!-- ============================================================ SUPPORT -->
+<section class="support" id="support" aria-labelledby="support-title">
+  <div class="support__card">
+    <div class="support__text">
+      <p class="kicker">Thank you</p>
+      <h2 id="support-title">MikiZip is free.<br>Your coffee keeps it that way.</h2>
+      <p>No ads, no tracking, no subscription. MikiZip is built and looked after by one person, Mihajlo, in his spare time. If it saved you some time or a few gigabytes, a coffee is a lovely way to say thanks, and it goes straight into making MikiZip better.</p>
+      <a class="btn btn--coffee" href="https://www.buymeacoffee.com/mihajlo" rel="noopener">
+        <span class="btn__label"><span class="cup" aria-hidden="true"></span>Buy me a coffee</span>
+        <span class="btn__meta">buymeacoffee.com/mihajlo</span>
+      </a>
+      <p class="support__alt">Not today? Telling a friend about MikiZip helps just as much.</p>
+    </div>
+    <figure class="support__qr">
+      <img src="assets/support-qr.png" width="700" height="700" alt="QR code: buymeacoffee.com/mihajlo">
+      <figcaption>Scan with your phone</figcaption>
+    </figure>
   </div>
 </section>
 
 <!-- ============================================================ PLATFORMS -->
 <section class="platforms" id="platforms" aria-labelledby="platforms-title">
   <div class="section-head">
-    <p class="kicker">05 — Every download</p>
-    <h2 id="platforms-title">All platforms, <span data-release-version-text>v1.3.1</span></h2>
+    <p class="kicker">All downloads</p>
+    <h2 id="platforms-title">Every platform, <span data-release-version-text>v1.3.2</span></h2>
   </div>
   <div class="grid-dl" data-platforms></div>
-  <p class="aside">Older versions and release notes: <a href="https://github.com/mist1985/MikiZipPublic/releases">github.com/mist1985/MikiZipPublic/releases</a></p>
+  <details class="verify">
+    <summary>Verify a download (SHA-256)</summary>
+    <div class="checks" data-checks></div>
+  </details>
 </section>
 
 <!-- ============================================================ FAQ -->
 <section class="faq" id="faq" aria-labelledby="faq-title">
   <div class="section-head">
-    <p class="kicker">06 — Questions</p>
+    <p class="kicker">Questions</p>
     <h2 id="faq-title">Good to know</h2>
   </div>
-  <details><summary>Is MikiZip free?</summary><p>Yes, free to download and use. If it saves you time, you can <a href="https://buymeacoffee.com/mihajlo">buy the developer a coffee</a>.</p></details>
-  <details><summary>Can other people open my archives?</summary><p><code>.zip</code>: everyone, with a double-click. <code>.7z</code>: anyone with 7-Zip, WinRAR, Keka or Windows 11. <code>.mkz</code> (MAX) needs MikiZip, so use it for your own archives or when the other person has MikiZip too.</p></details>
-  <details><summary>Is MAX lossy? Will my photos lose quality?</summary><p>No. Every file comes back byte for byte identical, and MikiZip proves it by decoding each file and comparing its SHA-256 fingerprint before it finishes.</p></details>
-  <details><summary>When is MAX not worth it?</summary><p>On plain text, source code and PNGs it matches 7-Zip rather than beating it, and it is slower to create. It shines on PDFs, JPEG photos and folders of many small, similar files.</p></details>
-  <details><summary>Is there a window app, or only the terminal?</summary><p>MikiZip is used from the terminal (<code>mikizip zip</code>, <code>mikizip unzip</code>…). Double-clicking a <code>.mkz</code> file on macOS or Windows opens a small dialog that unpacks it for you.</p></details>
-  <details><summary>What does MikiZip not keep?</summary><p>Contents, folders, empty folders, symlinks, permissions and modification times are kept. Extended attributes, Finder tags, ACLs and owners are not, and MikiZip always tells you when a file has any.</p></details>
-  <details><summary>Does it send anything over the internet?</summary><p>No. MikiZip works entirely offline.</p></details>
+  <details><summary>Is MikiZip really free?</summary><p>Yes, completely: no ads, no trial, no account. If you want to support it, you can <a href="https://www.buymeacoffee.com/mihajlo">buy me a coffee</a>.</p></details>
+  <details><summary>Can other people open my archives?</summary><p><code>.zip</code> opens everywhere with a double-click, and <code>.7z</code> in 7-Zip, WinRAR, Keka and Windows 11. MAX archives (<code>.mkz</code>) need MikiZip, so they’re best for your own files.</p></details>
+  <details><summary>Will my photos lose quality?</summary><p>Never. Every file comes back byte for byte identical, and MikiZip proves it before it finishes.</p></details>
+  <details><summary>What if a file with the same name exists?</summary><p>MikiZip never overwrites it without asking: it stops and tells you, and nothing is changed.</p></details>
+  <details><summary>Does it connect to the internet?</summary><p>No. MikiZip works entirely offline.</p></details>
 </section>
 
 </main>
@@ -256,10 +254,27 @@ cd MikiZip-*/ &amp;&amp; ./install.sh</code></pre>
   </div>
   <div class="foot__cols">
     <div><h4>Get</h4><a href="#download">Download</a><a href="https://github.com/mist1985/MikiZipPublic/releases">All releases</a></div>
-    <div><h4>Support</h4><a href="https://buymeacoffee.com/mihajlo">Buy me a coffee</a><a href="mailto:mihajlo.stojanovski@yahoo.com">mihajlo.stojanovski@yahoo.com</a></div>
+    <div><h4>Support</h4><a href="https://www.buymeacoffee.com/mihajlo">Buy me a coffee</a><a href="mailto:mihajlo.stojanovski@yahoo.com">Contact</a></div>
     <div><h4>Legal</h4><a href="LICENSE.txt">Licence</a><a href="THIRD-PARTY-NOTICES.txt">Third-party notices</a></div>
   </div>
-  <p class="foot__copy">© 2026 Mihajlo Stojanovski. All rights reserved. MikiZip is proprietary software, free to use.</p>
+  <p class="foot__copy">© 2026 Mihajlo Stojanovski. MikiZip is free to use. All rights reserved.</p>
 </footer>
+
+<!-- sticky download, shown once the main button has scrolled away -->
+<div class="dock" data-dock hidden>
+  <span class="dock__name">MikiZip <span data-release-version-text>v1.3.2</span></span>
+  <a class="dock__btn" href="#download" data-dock-link>Download</a>
+</div>
+
+<!-- after a download starts: next step, and a gentle thank-you -->
+<div class="thanks" data-thanks role="dialog" aria-labelledby="thanks-title" hidden>
+  <button class="thanks__close" type="button" aria-label="Close" data-thanks-close>×</button>
+  <p class="thanks__title" id="thanks-title">Thanks for downloading MikiZip!</p>
+  <p class="thanks__next">Next: open the file. <a href="#install" data-thanks-steps>Three quick steps</a> if your system asks.</p>
+  <div class="thanks__coffee">
+    <img src="assets/support-qr.png" width="700" height="700" alt="">
+    <p>MikiZip is free. If it helps you, <a href="https://www.buymeacoffee.com/mihajlo" rel="noopener">a coffee</a> keeps it going.</p>
+  </div>
+</div>
 </body>
 </html>
