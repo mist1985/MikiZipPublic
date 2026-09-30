@@ -302,13 +302,19 @@
   const human = (b) => (b >= 1e6 ? (b / 1e6).toFixed(1) + " MB" : b >= 1e3 ? (b / 1e3).toFixed(1) + " KB" : b + " B");
   const secs = (s) => s.toFixed(1) + "s";
 
+  // The CLI's line since 1.3.2: a spinner that always turns, then speed + ETA once data
+  // moves, or "working" + elapsed time while a step reports no progress.
+  const SPIN = "|/-\\";
+  let spinFrame = 0;
   function barLine(label, frac, done, total, speed, eta) {
     const width = 30;
     const filled = Math.floor(Math.round(frac * 1000) / 1000 * width);
-    return "  " + label.padEnd(11) + " " +
+    const spin = `<span class="c">${SPIN[spinFrame++ % 4]}</span> `;
+    const tail = speed > 0 ? `${human(speed)}/s  ETA ${eta}` : `working  elapsed ${eta}`;
+    return "  " + spin + label.padEnd(11) + " " +
       `<span class="c">${"█".repeat(filled)}</span><span class="d">${"░".repeat(width - filled)}</span> ` +
       `<span class="b">${(frac * 100).toFixed(1).padStart(5)}%</span>  ` +
-      `${human(done)}/${human(total)}  ${human(speed)}/s  ETA ${eta}`;
+      `${human(done)}/${human(total)}  ${tail}`;
   }
 
   // Two real runs recorded on 2026-09-29 (36.2 MB text file): zip, then max.
@@ -361,7 +367,8 @@
             const elapsed = Math.max(0.05, k * ph.seconds);
             const done = Math.round(frac * ph.total);
             const speed = done / elapsed;
-            const eta = frac <= 0 ? "--" : secs(Math.max(0, (ph.total - done) / Math.max(speed, 1)));
+            // Nothing moved yet: the CLI shows the elapsed time instead of an estimate.
+            const eta = done <= 0 ? secs(elapsed) : secs(Math.max(0, (ph.total - done) / Math.max(speed, 1)));
             paint(barLine(ph.label, frac, done, ph.total, speed, eta));
             if (k >= 1) break;
             await sleep(90);
