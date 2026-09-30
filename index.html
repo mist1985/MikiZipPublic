@@ -26,6 +26,7 @@
   <a class="wordmark" href="#top" aria-label="MikiZip home"><span class="wordmark__box" aria-hidden="true"></span>MIKIZIP</a>
   <nav aria-label="Sections">
     <a href="#how">How it works</a>
+    <a href="#commands">Commands</a>
     <a href="#install">Install</a>
     <a href="#support">Support</a>
     <a href="#faq">FAQ</a>
@@ -130,6 +131,42 @@
     </article>
   </div>
   <p class="aside">Unpacking is always <code>mikizip unzip</code>, or just double-click a <code>.mkz</code> file.</p>
+</section>
+
+<!-- ============================================================ COMMANDS -->
+<section class="commands" id="commands" aria-labelledby="commands-title">
+  <div class="section-head">
+    <p class="kicker">Commands</p>
+    <h2 id="commands-title">Copy, paste, done.</h2>
+  </div>
+  <p class="commands__hint">Open Terminal (macOS, Linux) or Command Prompt (Windows), then replace <code>Photos</code> with your own file or folder.</p>
+  <ul class="cmds">
+    <li class="cmd reveal">
+      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd>mikizip zip Photos</span></code>
+      <span class="cmd__what">Standard <b>.zip</b> that opens anywhere</span>
+      <button class="cmd__copy" type="button" data-copy>Copy</button>
+    </li>
+    <li class="cmd reveal">
+      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd>mikizip 7z Photos</span></code>
+      <span class="cmd__what">Much smaller <b>.7z</b>, opens in 7-Zip, WinRAR, Keka</span>
+      <button class="cmd__copy" type="button" data-copy>Copy</button>
+    </li>
+    <li class="cmd cmd--max reveal">
+      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd>mikizip max Photos</span></code>
+      <span class="cmd__what">Smallest: MikiZip <b>MAX</b> (.mkz)</span>
+      <button class="cmd__copy" type="button" data-copy>Copy</button>
+    </li>
+    <li class="cmd reveal">
+      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd>mikizip unzip Photos.mkz</span></code>
+      <span class="cmd__what">Unpacks a <b>.zip</b>, <b>.7z</b> or <b>.mkz</b> right beside it</span>
+      <button class="cmd__copy" type="button" data-copy>Copy</button>
+    </li>
+    <li class="cmd cmd--help reveal">
+      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd>mikizip --help</span></code>
+      <span class="cmd__what">Every command and option, with examples</span>
+      <button class="cmd__copy" type="button" data-copy>Copy</button>
+    </li>
+  </ul>
 </section>
 
 <!-- ============================================================ TRUST -->

@@ -255,6 +255,19 @@
     }
   }
 
+  /* ---------------------------------------------------------------- copyable commands */
+  $$("[data-copy]").forEach((btn) => {
+    const cmd = $("[data-cmd]", btn.closest(".cmd")).textContent.trim();
+    btn.setAttribute("aria-label", `Copy: ${cmd}`);
+    btn.addEventListener("click", async () => {
+      await copyText(cmd, btn, `Copied: ${cmd}`);
+      btn.textContent = "Copied";
+      clearTimeout(btn._t);
+      btn._t = setTimeout(() => (btn.textContent = "Copy"), 1600);
+    });
+  });
+  $$(".cmds .reveal").forEach((el, i) => el.style.setProperty("--i", i));
+
   /* ---------------------------------------------------------------- reveal on scroll */
   const io = "IntersectionObserver" in window
     ? new IntersectionObserver((entries) => {
