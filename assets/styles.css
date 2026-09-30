@@ -242,11 +242,7 @@ h3 { margin: 0 0 6px; font-size: 20px; line-height: 1.2; font-weight: 700; font-
 .cmd--help .cmd__line [data-cmd] { color: var(--term-cyan); }
 .cmd__what { font-size: 15px; color: color-mix(in srgb, var(--term-fg) 72%, transparent); }
 .cmd__ph { color: var(--term-dim); font-style: italic; border-bottom: 1px dashed rgba(255,255,255,.28); }
-.cmd__eg { grid-column: 1 / -1; font-size: 13.5px; color: var(--term-dim); display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; margin-top: -2px; }
-.cmd__eg code { background: rgba(255,255,255,.06); color: color-mix(in srgb, var(--term-fg) 88%, transparent); padding: 2px 7px; border-radius: 4px; font-size: 13px; }
-.cmd__eg-label { font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
-.cmd__arrow { color: var(--signal); }
-.cmd__res { color: var(--term-green); font-family: var(--mono); font-size: 13px; }
+.cmd__eg { grid-column: 1 / -1; margin-top: -4px; padding-left: 1.55em; background: none; font: 400 14px/1.4 var(--mono); color: color-mix(in srgb, var(--term-fg) 58%, transparent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cmd__what b { color: var(--term-fg); font-weight: 600; }
 .cmd__copy {
   appearance: none; cursor: pointer; border: 1px solid rgba(255,255,255,.22); background: transparent; color: var(--term-fg);
