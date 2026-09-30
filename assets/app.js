@@ -257,10 +257,11 @@
 
   /* ---------------------------------------------------------------- copyable commands */
   $$("[data-copy]").forEach((btn) => {
-    const cmd = $("[data-cmd]", btn.closest(".cmd")).textContent.trim();
-    btn.setAttribute("aria-label", `Copy: ${cmd}`);
+    // data-cmd holds what to paste: the command with a trailing space, ready for a dragged-in path.
+    const cmd = $("[data-cmd]", btn.closest(".cmd")).dataset.cmd;
+    btn.setAttribute("aria-label", `Copy: ${cmd.trim()}`);
     btn.addEventListener("click", async () => {
-      await copyText(cmd, btn, `Copied: ${cmd}`);
+      await copyText(cmd, btn, cmd.endsWith(" ") ? `Copied “${cmd.trim()}”: now paste it and drag in your file` : `Copied “${cmd}”`);
       btn.textContent = "Copied";
       clearTimeout(btn._t);
       btn._t = setTimeout(() => (btn.textContent = "Copy"), 1600);

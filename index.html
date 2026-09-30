@@ -139,30 +139,34 @@
     <p class="kicker">Commands</p>
     <h2 id="commands-title">Copy, paste, done.</h2>
   </div>
-  <p class="commands__hint">Open Terminal (macOS, Linux) or Command Prompt (Windows), then replace <code>Photos</code> with your own file or folder.</p>
+  <p class="commands__hint"><b>Fastest way:</b> copy a command, paste it into Terminal (macOS, Linux) or Command Prompt (Windows), then <b>drag your file or folder into the window</b>: its path is typed for you. Press Enter.</p>
   <ul class="cmds">
     <li class="cmd reveal">
-      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd>mikizip zip Photos</span></code>
+      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd="mikizip zip ">mikizip zip</span> <span class="cmd__ph">&lt;file or folder&gt;</span></code>
       <span class="cmd__what">Standard <b>.zip</b> that opens anywhere</span>
       <button class="cmd__copy" type="button" data-copy>Copy</button>
+      <span class="cmd__eg"><span class="cmd__eg-label">e.g.</span> <code>mikizip zip ~/Documents/report.pdf</code> <span class="cmd__arrow" aria-hidden="true">→</span> <span class="cmd__res">report.pdf.zip, next to it</span></span>
     </li>
     <li class="cmd reveal">
-      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd>mikizip 7z Photos</span></code>
-      <span class="cmd__what">Much smaller <b>.7z</b>, opens in 7-Zip, WinRAR, Keka</span>
+      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd="mikizip 7z ">mikizip 7z</span> <span class="cmd__ph">&lt;file or folder&gt;</span></code>
+      <span class="cmd__what">Much smaller <b>.7z</b> (7-Zip, WinRAR, Keka)</span>
       <button class="cmd__copy" type="button" data-copy>Copy</button>
+      <span class="cmd__eg"><span class="cmd__eg-label">e.g.</span> <code>mikizip 7z ~/Pictures/Holiday</code> <span class="cmd__arrow" aria-hidden="true">→</span> <span class="cmd__res">Holiday.7z</span></span>
     </li>
     <li class="cmd cmd--max reveal">
-      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd>mikizip max Photos</span></code>
+      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd="mikizip max ">mikizip max</span> <span class="cmd__ph">&lt;file or folder&gt;</span></code>
       <span class="cmd__what">Smallest: MikiZip <b>MAX</b> (.mkz)</span>
       <button class="cmd__copy" type="button" data-copy>Copy</button>
+      <span class="cmd__eg"><span class="cmd__eg-label">e.g.</span> <code>mikizip max ~/Documents/Invoices</code> <span class="cmd__arrow" aria-hidden="true">→</span> <span class="cmd__res">Invoices.mkz</span></span>
     </li>
     <li class="cmd reveal">
-      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd>mikizip unzip Photos.mkz</span></code>
+      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd="mikizip unzip ">mikizip unzip</span> <span class="cmd__ph">&lt;archive&gt;</span></code>
       <span class="cmd__what">Unpacks a <b>.zip</b>, <b>.7z</b> or <b>.mkz</b> right beside it</span>
       <button class="cmd__copy" type="button" data-copy>Copy</button>
+      <span class="cmd__eg"><span class="cmd__eg-label">e.g.</span> <code>mikizip unzip ~/Downloads/Invoices.mkz</code> <span class="cmd__arrow" aria-hidden="true">→</span> <span class="cmd__res">an Invoices folder</span></span>
     </li>
     <li class="cmd cmd--help reveal">
-      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd>mikizip --help</span></code>
+      <code class="cmd__line"><span class="cmd__prompt" aria-hidden="true">$</span><span data-cmd="mikizip --help">mikizip --help</span></code>
       <span class="cmd__what">Every command and option, with examples</span>
       <button class="cmd__copy" type="button" data-copy>Copy</button>
     </li>
