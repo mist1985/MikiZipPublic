@@ -200,6 +200,28 @@ h3 { margin: 0 0 6px; font-size: 20px; line-height: 1.2; font-weight: 700; font-
 @keyframes blink { 50% { opacity: 0; } }
 .demo__caption { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
 
+/* ------------------------------------------------------------------ the big shrink */
+.shrink { margin: 26px 0 0; display: grid; gap: 14px; }
+.shrink__row { display: grid; grid-template-columns: 130px minmax(0, 1fr) 190px; gap: 16px; align-items: center; }
+.shrink__label { font: 600 13px/1.2 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.shrink__row--max .shrink__label { color: var(--signal-ink); }
+.shrink__track { height: 28px; position: relative; }
+.shrink__bar { position: absolute; inset: 0 auto 0 0; width: calc(var(--w) * 100%); border-radius: 3px; transition: width 1.6s var(--ease-snap); }
+.shrink__bar--orig { background: var(--paper-2); border: 1.5px solid var(--rule-strong); }
+.shrink__bar--zip { background: repeating-linear-gradient(135deg, var(--ink-2) 0 2px, transparent 2px 6px); border: 1.5px solid var(--ink-2); }
+.shrink__bar--max { background: var(--signal); min-width: 6px; box-shadow: 0 0 0 6px color-mix(in srgb, var(--signal) 18%, transparent); }
+.js .shrink:not(.in) .shrink__bar { width: 100%; }
+.shrink.in .shrink__bar--zip { transition-delay: .2s; }
+.shrink.in .shrink__bar--max { transition-duration: 1.9s; transition-delay: .55s; }
+.shrink__size { font: 700 22px/1 var(--display); font-variation-settings: "wdth" 80; white-space: nowrap; }
+.shrink__size em { display: block; margin-top: 4px; font: 500 12px/1 var(--mono); font-style: normal; color: var(--muted); }
+.shrink__row--max .shrink__size { color: var(--signal-ink); font-size: 30px; }
+.shrink__row--max .shrink__size em { color: var(--signal-ink); }
+@media (max-width: 700px) {
+  .shrink__row { grid-template-columns: minmax(0, 1fr) auto; }
+  .shrink__track { grid-column: 1 / -1; grid-row: 2; }
+}
+
 /* ------------------------------------------------------------------ stats */
 .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
 @media (max-width: 760px) { .stats { grid-template-columns: minmax(0, 1fr); } }

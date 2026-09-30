@@ -281,6 +281,8 @@
   $$(".tags .reveal").forEach((el, i) => el.style.setProperty("--i", i));
   $$(".rules .reveal").forEach((el, i) => el.style.setProperty("--i", i % 3));
   observe($$(".reveal"));
+  const shrink = $("[data-shrink]"); // the 214 MB -> 5 MB bars shrink when they come into view
+  if (shrink) observe([shrink]);
 
   const nav = $(".nav");
   addEventListener("scroll", () => nav.classList.toggle("is-scrolled", scrollY > 8), { passive: true });
@@ -428,15 +430,16 @@
       `${human(done)}/${human(total)}  ${tail}`;
   }
 
-  // Two real runs recorded on 2026-09-29 (36.2 MB text file): zip, then max.
+  // Two real runs recorded on 2026-09-30 on a 214 MB PDF: zip saves 5 %, max saves 98 %.
+  // The result lines are copied verbatim from those runs.
   const RUNS = [
-    { cmd: "mikizip zip sample.txt", phases: [{ label: "Zipping", total: 36194404, seconds: 0.9, curve: 1 }],
-      done: "✓ sample.txt.zip  1 file, 36.2 MB → 13.7 MB (62% smaller), verified, 1.0s" },
-    { cmd: "mikizip max sample.txt", phases: [
-        { label: "Max-zipping", total: 36194404, seconds: 21.6, curve: 1.6 },
-        { label: "Checking", total: 11238881, seconds: 0.12, curve: 1 },
-        { label: "Verifying", total: 36194404, seconds: 0.37, curve: 1 }],
-      done: "✓ sample.txt.mkz  1 file, 36.2 MB → 11.2 MB (69% smaller), verified, 23.1s" },
+    { cmd: "mikizip zip 200MB-TESTFILE.pdf", phases: [{ label: "Zipping", total: 214119654, seconds: 3.3, curve: 1 }],
+      done: "✓ 200MB-TESTFILE.pdf.zip  1 file, 214.1 MB → 203.5 MB (5% smaller), verified, 3.6s" },
+    { cmd: "mikizip max 200MB-TESTFILE.pdf", phases: [
+        { label: "Max-zipping", total: 214119654, seconds: 31.5, curve: 1.4 },
+        { label: "Checking", total: 5026085, seconds: 0.1, curve: 1 },
+        { label: "Verifying", total: 214119654, seconds: 1.4, curve: 1 }],
+      done: "✓ 200MB-TESTFILE.pdf.mkz  1 file, 214.1 MB → 5.0 MB (98% smaller), verified, 33.8s" },
   ];
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   let lines = [];

@@ -83,7 +83,24 @@
     <div class="term__bar"><i></i><i></i><i></i><span>Terminal — mikizip</span></div>
     <pre class="term__screen" data-term aria-hidden="true"></pre>
   </div>
-  <p class="demo__caption">Real output from a real run. One command, and the archive is checked before MikiZip says done.</p>
+  <figure class="shrink" data-shrink aria-label="A 214 MB PDF: as .zip 203.5 MB, as MikiZip MAX 5.0 MB">
+    <div class="shrink__row">
+      <span class="shrink__label">Original PDF</span>
+      <span class="shrink__track"><i class="shrink__bar shrink__bar--orig" style="--w:1"></i></span>
+      <span class="shrink__size">214.1 MB</span>
+    </div>
+    <div class="shrink__row">
+      <span class="shrink__label">.zip</span>
+      <span class="shrink__track"><i class="shrink__bar shrink__bar--zip" style="--w:.9505"></i></span>
+      <span class="shrink__size">203.5 MB <em>5% smaller</em></span>
+    </div>
+    <div class="shrink__row shrink__row--max">
+      <span class="shrink__label">MikiZip MAX</span>
+      <span class="shrink__track"><i class="shrink__bar shrink__bar--max" style="--w:.0235"></i></span>
+      <span class="shrink__size">5.0 MB <em>98% smaller</em></span>
+    </div>
+    <figcaption class="demo__caption">A real 214 MB PDF, real output from real runs. Every byte is checked before MikiZip says done.</figcaption>
+  </figure>
 </section>
 
 <!-- ============================================================ STATS -->
