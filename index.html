@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css?v=ca0ec8af9e">
 <script>document.documentElement.classList.add("js")</script>
-<script src="assets/release.js?v=80915a4968"></script>
+<script src="assets/release.js?v=328f7a1a83"></script>
 <script src="assets/app.js?v=5a2c1f5055" defer></script>
 </head>
 <body>
@@ -198,7 +198,7 @@
   </div>
   <ol class="rules">
     <li class="reveal"><h3>Checked before “done”</h3><p>Every archive is read back and compared with your files before MikiZip reports success.</p></li>
-    <li class="reveal"><h3>Nothing overwritten</h3><p>An existing file is never replaced unless you ask. Your files stay exactly as they were.</p></li>
+    <li class="reveal"><h3>Nothing overwritten</h3><p>If a name is taken, MikiZip saves <code>Archive01.zip</code> instead. Your files stay exactly as they were.</p></li>
     <li class="reveal"><h3>Safe to open anything</h3><p>No archive can write outside its folder or bomb your disk. Damage is reported, never guessed at.</p></li>
   </ol>
 </section>
@@ -297,8 +297,12 @@ cd MikiZip-*/ &amp;&amp; ./install.sh</code></pre></li>
   <details><summary>Is MikiZip really free?</summary><p>Yes, completely: no ads, no trial, no account. If you want to support it, you can <a href="https://www.buymeacoffee.com/mihajlo">buy me a coffee</a>.</p></details>
   <details><summary>Can other people open my archives?</summary><p><code>.zip</code> opens everywhere with a double-click, and <code>.7z</code> in 7-Zip, WinRAR, Keka and Windows 11. MAX archives (<code>.mkz</code>) need MikiZip, so they’re best for your own files.</p></details>
   <details><summary>Will my photos lose quality?</summary><p>Never. Every file comes back byte for byte identical, and MikiZip proves it before it finishes.</p></details>
-  <details><summary>What if a file with the same name exists?</summary><p>MikiZip never overwrites it without asking: it stops and tells you, and nothing is changed.</p></details>
+  <details><summary>What if a file with the same name exists?</summary><p>MikiZip never overwrites it. The new one is saved as <code>Archive01.zip</code>, then <code>Archive02.zip</code>, and so on, and MikiZip tells you which name it used.</p></details>
+  <details><summary>Which computers does it run on?</summary><p>Macs with Apple silicon (M1 or newer), 64-bit Windows, and Linux on x86-64 or ARM64 (with Python 3.9 or newer, which most distributions already have).</p></details>
+  <details><summary>Why does my computer warn me when I install it?</summary><p>MikiZip is an independent project, so it isn’t signed with a paid Apple or Microsoft certificate. On a Mac, click <em>Open Anyway</em> in <em>System Settings → Privacy &amp; Security</em>; on Windows, click <em>More info → Run anyway</em>. You can <a href="#platforms">check the download’s fingerprint</a> to be sure it’s the original.</p></details>
+  <details><summary>How long does MAX take?</summary><p>Longer than a plain zip, because it works much harder: a 214 MB PDF takes about half a minute and ends up at 5 MB. Big files use several processor cores, and a moving progress bar always shows it’s working.</p></details>
   <details><summary>Does it connect to the internet?</summary><p>No. MikiZip works entirely offline.</p></details>
+  <details><summary>How do I uninstall it?</summary><p>macOS: run <code>mikizip-uninstall</code> in Terminal. Windows: <em>Settings → Apps → Installed apps</em>. Linux: run <code>uninstall.sh</code> from the folder you installed from.</p></details>
 </section>
 
 </main>
