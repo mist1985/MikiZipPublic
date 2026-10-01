@@ -7,5 +7,14 @@
    "windows": 3,
    "linux": 5
   }
+ },
+ {
+  "taken": "2026-10-01T15:02:11+00:00",
+  "total": 14,
+  "os": {
+   "macos": 5,
+   "windows": 4,
+   "linux": 5
+  }
  }
 ]

@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css?v=ca0ec8af9e">
 <script>document.documentElement.classList.add("js")</script>
-<script src="assets/release.js?v=328f7a1a83"></script>
+<script src="assets/release.js?v=567806c9e1"></script>
 <script src="assets/app.js?v=5a2c1f5055" defer></script>
 </head>
 <body>
@@ -301,8 +301,10 @@ cd MikiZip-*/ &amp;&amp; ./install.sh</code></pre></li>
   <details><summary>Which computers does it run on?</summary><p>Macs with Apple silicon (M1 or newer), 64-bit Windows, and Linux on x86-64 or ARM64 (with Python 3.9 or newer, which most distributions already have).</p></details>
   <details><summary>Why does my computer warn me when I install it?</summary><p>MikiZip is an independent project, so it isn’t signed with a paid Apple or Microsoft certificate. On a Mac, click <em>Open Anyway</em> in <em>System Settings → Privacy &amp; Security</em>; on Windows, click <em>More info → Run anyway</em>. You can <a href="#platforms">check the download’s fingerprint</a> to be sure it’s the original.</p></details>
   <details><summary>How long does MAX take?</summary><p>Longer than a plain zip, because it works much harder: a 214 MB PDF takes about half a minute and ends up at 5 MB. Big files use several processor cores, and a moving progress bar always shows it’s working.</p></details>
+  <details><summary>Why did my movie or photo folder barely shrink?</summary><p>Videos, photos, music, scanned PDFs and installers are already compressed inside, so no archiver can make them much smaller. 7-Zip and WinRAR get the same 0–2%. MAX shines on documents: text and vector PDFs, Word, Excel and PowerPoint files, PNG screenshots, logs and data.</p></details>
   <details><summary>Does it connect to the internet?</summary><p>No. MikiZip works entirely offline.</p></details>
-  <details><summary>How do I uninstall it?</summary><p>macOS: run <code>mikizip-uninstall</code> in Terminal. Windows: <em>Settings → Apps → Installed apps</em>. Linux: run <code>uninstall.sh</code> from the folder you installed from.</p></details>
+  <details><summary>Found a problem?</summary><p>Email <code>mihajlo.stojanovski@yahoo.com</code> with your system (macOS, Windows or Linux), the command you ran, and what it printed. Adding <code>--json</code> to the command gives the most useful details. Your files are never needed and never leave your computer.</p></details>
+  <details><summary>How do I uninstall it?</summary><p>macOS: run <code>mikizip-uninstall</code> in Terminal. Windows: <em>Settings → Apps → Installed apps</em>. Linux: run <code>~/.local/share/mikizip/uninstall.sh</code> (or <code>/opt/mikizip/uninstall.sh</code> after a <code>--system</code> install).</p></details>
 </section>
 
 </main>
